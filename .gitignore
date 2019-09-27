@@ -1,4 +1,9 @@
 # ignore these files when pushed to GitHub
 
-apiKeys.txt
+
+# KEYS
+zillowKey.txt
+glassDoorKey.txt
+
+# MAC
 .DS_Store

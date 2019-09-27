@@ -9,6 +9,9 @@ Goal:
 import sys
 from xml.dom import minidom
 
+import xml.etree.ElementTree as ET
+
+
 
 '''**************************************************************
 This will be called from the ZillowAPI.java file and have the
@@ -18,6 +21,14 @@ state_city_type_.txt
 print "This is the name of the script: ", sys.argv[0]
 print "Number of arguments: ", len(sys.argv)
 print "The arguments are: " , str(sys.argv)
-
 #passing in the file name when this script is executed
-#mydoc = minidom.parse(sys.argv[2])
+#mydoc = minidom.parse(sys.argv[1])
+#items = mydoc.getElementsByTagName('region')
+
+tree = ET.parse(sys.argv[1])
+root = tree.getroot()
+
+for child in root:
+	print(child.tag, child.attrib)
+
+
