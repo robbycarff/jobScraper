@@ -8,7 +8,6 @@ Goal:
 ***************************************************************'''
 import sys
 from xml.dom import minidom
-
 import xml.etree.ElementTree as ET
 
 
@@ -32,12 +31,21 @@ root = tree.getroot()
 for child in root:
 	print(child.tag, child.attrib)
 
+children = root.getchildren()
+for child in children:
+    ET.dump(child)
+
 # trying to iterate of all of the returned neighborhood roots and
 # retreive the name and long/lat of the neighborhoods
-for neighborhood in root.findall('neighborhood'):
-	longitude = neighborhood.find('longitude').text
-	latitude  = neighborhood.find('latitude').text
+for neighborhood in children:
+	longitude = neighborhood.find('longitude')
+	latitude  = neighborhood.find('latitude')
 	name = neighborhood.get('name')
 	print(name, latitude)
+
+
+#PLOTTING HERE
+
+
 
 
