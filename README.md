@@ -5,9 +5,9 @@ The goal of this project is to help me with look at metrics from various cities 
 This project uses [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm) to gather data
 
 * [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
+* [Python](https://www.python.org)
 * [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm)
 * [Glassdoor API](https://www.glassdoor.com/developer/index.htm)
-* [R API for java](https://cran.r-project.org/web/packages/rJava/rJava.pdf)
 
 Goals:
 - datamine with zillow API

@@ -12,5 +12,9 @@ from xml.dom import minidom
 
 
 
-#this is going to be used 
+'''**************************************************************
+This will be called from the ZillowAPI.java file and have the
+search parameters piped in. This is because the file is saved as
+state_city_type_.txt
+***************************************************************'''
 mydoc = minidom.parse('items.xml')

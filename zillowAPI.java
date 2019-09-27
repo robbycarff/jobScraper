@@ -34,6 +34,8 @@ public class zillowAPI{
 		try {
 			//requested for getting children
 			String testURL = "http://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=";
+			//this test URL is the full request for regionChildren 
+			//need to learn how to use tables to put together HTTP request arguments 
 			String get = testURL.concat(API_TOKEN).concat("&state=").concat(State).concat("&city=").concat(City).concat("&childtype=").concat(Child);
 			URL url = new URL(get);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -71,16 +73,24 @@ public class zillowAPI{
 	}
 	/**************************************
 	* This method should read in the saved
-	* XML file and execute it with an R script
-	* R will then read the XML and open a plot 
-	* of the data
+	* XML file and execute it with our python
+	* program 
+	* 
+	* goal is to use python to make a map 
+	* with long/lat
 	*
 	* Might pipe and execute some python
 	*
+	* Jython library should be used here
+	*
 	***************************************/
-	public static void plotR(){
-
-		//Runtime.getRuntime().exec("Plot"); 
+	public static void plotPython(){
+		PythonInterpreter interpreter = new PythonInterpreter();
+		interpreter.exec("import sys\nsys.path.append('pathToModules if they are not there by default')\nimport yourModule");
+		// execute a function that takes a string and returns a string
+		PyObject someFunc = interpreter.get("funcName");
+		PyObject result = someFunc.__call__(new PyString("Test!"));
+		String realResult = (String) result.__tojava__(String.class);
 	}
 
 	public static void main(String[] args){
