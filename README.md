@@ -1,14 +1,6 @@
 # JobScraper
 The goal of this project is to help me with look at metrics from various cities and neighborhoods while I look for a job.
 
-#### Built with
-This project uses [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm) to gather data
-
-* [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
-* [Python](https://www.python.org)
-* [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm)
-* [Glassdoor API](https://www.glassdoor.com/developer/index.htm)
-
 Goals:
 - datamine with zillow API
 - datamine wil glassdoor API
@@ -19,12 +11,24 @@ Goals:
   - cool stuff
 - plot all this data on a map
 
-- Visuals??
+
+![Map one]()
+
+
+![Map two]()
+
+
+#### Built with
+This project uses [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm) to gather data. Plots the data using ploty to create extremely cool maps based on gathered data
+
+* [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
+* [Python](https://www.python.org)
+* [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm)
+* [Glassdoor API](https://www.glassdoor.com/developer/index.htm)
+* [Ploty](https://plot.ly/python/maps/)
 
 ## Getting Started
- head on over to the [Zillow API website](https://www.zillow.com/howto/api/APIOverview.html and request an API key. I store this in a file named apiKeys.txt, and read from it in the zillowAPI.java program. (the zillow key has to be on the first line of the file currently)
-
-
+ head on over to the [Zillow API website](https://www.zillow.com/howto/api/APIOverview.html) and request an API key. I store this in a file named apiKeys.txt, and read from it in the zillowAPI.java program. (the zillow key has to be on the first line of the file currently)
 
 ### Prerequisites
 Install all of the required programming librarys linked above (java, python)
