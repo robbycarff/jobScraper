@@ -8,10 +8,16 @@ JCC = javac
 
 JFLAGS = -g
 
-default: zillowAPI.class
+default: zillowAPI.class glassDoorAPI.class driverProgram.class
 
 zillowAPI.class: zillowAPI.java
 	$(JCC) $(JFLAGS) zillowAPI.java
+
+glassDoorAPI.class: glassDoorAPI.java
+	$(JCC) $(JFLAGS) glassDoorAPI.java
+
+driverProgram.class: driverProgram.java
+	$(JCC) $(JFLAGS) driverProgram.java
 
 clean:
 	$(RM) *.class

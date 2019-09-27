@@ -6,10 +6,11 @@ Goal:
 	use the Zillow and Glassdoor API to compare average 
 	salaries to average housing prices
 
-ZILLOW KEY - property details API, Valuation API
+ MAKSE SURE TO GET YOUR ZILLOW KEY
 
 THIS PROJECT IS IN DEVELOPMENT AND THE CODE NEEDS TO BE BROKEN
 DOWN INTO METHODS THAT CAN BE CALLED
+
 - for example, generating the file path is used in both:
 		getRegionChildren and plotPython
 ***************************************************************/
@@ -34,14 +35,14 @@ public class zillowAPI{
 	* 
 	* THIS METHOD REQUESTS NEIGHBORHOOD AND WRITES TO FILE
 	***********************************************************/
-	public static void GetRegionChildren( String API_TOKEN, String State, String City, String Child){
+	public static void GetRegionChildren( String zillow_token, String State, String City, String Child){
 		//creating a connection
 		try {
 			//requested for getting children
 			String testURL = "http://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=";
 			//this test URL is the full request for regionChildren 
 			//need to learn how to use tables to put together HTTP request arguments 
-			String get = testURL.concat(API_TOKEN).concat("&state=").concat(State).concat("&city=").concat(City).concat("&childtype=").concat(Child);
+			String get = testURL.concat(zillow_token).concat("&state=").concat(State).concat("&city=").concat(City).concat("&childtype=").concat(Child);
 			URL url = new URL(get);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
@@ -61,10 +62,10 @@ public class zillowAPI{
 
 			//this is a shitty way to pipe to a new file but it works fast
 			String fileName = "";
-			PrintStream file = new PrintStream(new File(fileName.concat(State).concat("_").concat(City).concat("_").concat(Child).concat(".txt")));
+			PrintStream fileNameGenerated = new PrintStream(new File("../data/".concat(State).concat("_").concat(City).concat("_").concat(Child).concat(".txt")));
 			PrintStream console = System.out;
 			//changing the .out to my file and then back to console
-			System.setOut(file);
+			System.setOut(fileNameGenerated);
 			System.out.println(content);
 			System.setOut(console);
 
@@ -114,39 +115,31 @@ public class zillowAPI{
 		
 	}
 
+	public static String getZillowToken(){
+			//GRABBING MY ZILLOW API KEY FROM LOCAL FILE
+		String zillow_token = "";
+		try {
+			Scanner keys = new Scanner(new File("zillowKey.txt"));
+
+			while(keys.hasNext()){
+				//this is the instances API_TOKEN
+		        zillow_token = keys.nextLine();
+		        System.out.println("Zillow Key: " + zillow_token);
+	    	}	
+		}
+		catch (FileNotFoundException ex){
+			System.out.println("ur file shits broken");
+		}
+		return zillow_token;
+	}
+
 	/**************************************
 	* Driver function - will be used to 
 	* take in command line args
 	*
 	***************************************/
 	public static void main(String[] args){
-		//GRABBING MY ZILLOW API KEY FROM LOCAL FILE
-		String zws_id = "";
-		try {
-			Scanner keys = new Scanner(new File("apiKeys.txt"));
-
-			while(keys.hasNext()){
-				//this is the instances API_TOKEN
-		        zws_id = keys.nextLine();
-		        System.out.println("Zillow Key: " + zws_id);
-	    	}	
-		}
-		catch (FileNotFoundException ex){
-			System.out.println("ur file shits broken");
-		}
-
-
-		
-		// these will be controlled with command line arguments
-		String State = "wa";
-		String City = "seattle";
-		String Child = "neighborhood";
-
-		System.out.println("Test 1 - GetRegionChildren");
-		GetRegionChildren(zws_id, State, City, Child);
-
-		System.out.println("Test 2 - calling plotPython");
-		plotPython(State, City, Child);
+	
 	}
 
 }
