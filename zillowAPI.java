@@ -7,7 +7,11 @@ Goal:
 	salaries to average housing prices
 
 ZILLOW KEY - property details API, Valuation API
-	X1-ZWz17nad7qjhfv_ac8os
+
+THIS PROJECT IS IN DEVELOPMENT AND THE CODE NEEDS TO BE BROKEN
+DOWN INTO METHODS THAT CAN BE CALLED
+- for example, generating the file path is used in both:
+		getRegionChildren and plotPython
 ***************************************************************/
 
 /*IMPORTS */
@@ -19,16 +23,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException; 
 import java.net.URL;
 import java.io.File;
+import java.util.Scanner;
+import java.io.*;
+
 /*MAIN CLASS */
 public class zillowAPI{
-	/**************************************
+	/***********************************************************
 	* GetRegionChildren resides at: 
 	* http://www.zillow.com/webservice/GetRegionChildren.htm
-	*
-	* Parameters
-	* ZWID required
-	*
-	***************************************/
+	* 
+	* THIS METHOD REQUESTS NEIGHBORHOOD AND WRITES TO FILE
+	***********************************************************/
 	public static void GetRegionChildren( String API_TOKEN, String State, String City, String Child){
 		//creating a connection
 		try {
@@ -68,7 +73,7 @@ public class zillowAPI{
 			System.out.println("Connection closed");
 			}
 		catch (Exception e){
-			System.out.println("ur shits broken");
+			System.out.println("ur java shits broken");
 		}
 	}
 	/**************************************
@@ -84,24 +89,64 @@ public class zillowAPI{
 	* Jython library should be used here
 	*
 	***************************************/
-	public static void plotPython(){
-		PythonInterpreter interpreter = new PythonInterpreter();
-		interpreter.exec("import sys\nsys.path.append('pathToModules if they are not there by default')\nimport yourModule");
-		// execute a function that takes a string and returns a string
-		PyObject someFunc = interpreter.get("funcName");
-		PyObject result = someFunc.__call__(new PyString("Test!"));
-		String realResult = (String) result.__tojava__(String.class);
+	public static void plotPython(String State, String City, String Child){
+		try{
+			/*
+			PythonInterpreter interpreter = new PythonInterpreter();
+			//this is where we link the file with the methods inside
+			interpreter.exec("import sys\nsys.path.append('pathToModules if they are not there by default')\nimport yourModule");
+
+			// execute a function that takes a string and returns a string
+			PyObject someFunc = interpreter.get("plot_zillow");
+			//generate the file name
+			String fileName = "";
+			fileName.concat(State).concat("_").concat(City).concat("_").concat(Child).concat(".txt");
+			//pass in the file name
+			PyObject result = someFunc.__call__(new PyString(fileName));
+			//print the result
+			String realResult = (String) result.__tojava__(String.class);
+			System.out.println(realResult);
+			*/
+		}
+		catch (Exception e){
+			System.out.println("ur python shits broken");
+		}
+		
 	}
 
+	/**************************************
+	* Driver function - will be used to 
+	* take in command line args
+	*
+	***************************************/
 	public static void main(String[] args){
-		//this is the instances API_TOKEN
-		String zws_id = "X1-ZWz17nad7qjhfv_ac8os";
+		//GRABBING MY ZILLOW API KEY FROM LOCAL FILE
+		String zws_id = "";
+		try {
+			Scanner keys = new Scanner(new File("apiKeys.txt"));
+
+			while(keys.hasNext()){
+				//this is the instances API_TOKEN
+		        zws_id = keys.nextLine();
+		        System.out.println("Zillow Key: " + zws_id);
+	    	}	
+		}
+		catch (FileNotFoundException ex){
+			System.out.println("ur file shits broken");
+		}
+
+
+		
 		// these will be controlled with command line arguments
 		String State = "wa";
 		String City = "seattle";
 		String Child = "neighborhood";
+
 		System.out.println("Test 1 - GetRegionChildren");
 		GetRegionChildren(zws_id, State, City, Child);
+
+		System.out.println("Test 2 - calling plotPython");
+		plotPython(State, City, Child);
 	}
 
 }
