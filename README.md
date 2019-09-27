@@ -12,10 +12,10 @@ Goals:
 - plot all this data on a map
 
 
-![Map one]()
+![Map one](https://github.com/robbycarff/jobScraper/blob/master/images/map1.png)
 
 
-![Map two]()
+![Map two](https://github.com/robbycarff/jobScraper/blob/master/images/map2.png)
 
 
 #### Built with
