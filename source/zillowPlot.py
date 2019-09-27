@@ -25,10 +25,19 @@ print "The arguments are: " , str(sys.argv)
 #mydoc = minidom.parse(sys.argv[1])
 #items = mydoc.getElementsByTagName('region')
 
-tree = ET.parse(sys.argv[1])
+testFile = "../data/wa_seattle_neighborhood.txt"
+tree = ET.parse(testFile)
 root = tree.getroot()
 
 for child in root:
 	print(child.tag, child.attrib)
+
+# trying to iterate of all of the returned neighborhood roots and
+# retreive the name and long/lat of the neighborhoods
+for neighborhood in root.findall('neighborhood'):
+	longitude = neighborhood.find('longitude').text
+	latitude  = neighborhood.find('latitude').text
+	name = neighborhood.get('name')
+	print(name, latitude)
 
 
