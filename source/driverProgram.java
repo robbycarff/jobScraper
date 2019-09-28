@@ -29,8 +29,8 @@ public class driverProgram
 		String zillow_token = zillowAPI.getZillowToken();
 
 		// these will be controlled with command line arguments
-		String State = "wa";
-		String City = "seattle";
+		String State = "sc";
+		String City = "charleston";
 		String Child = "neighborhood";
 
 		System.out.println("Test 1 - GetRegionChildren");

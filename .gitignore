@@ -6,7 +6,7 @@ zillowKey.txt
 glassDoorKey.txt
 
 # MAC
-.DS_Stor
+.DS_Store
 
 # my VSC workspace
 jobScraper.code-workspace
