@@ -19,18 +19,8 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.*;
 
-
-
-
-
-
-
-
 public class glassDoorAPI
 {
-
-
-
 	private String getGlassDoorToken(){
 		//GRABBING MY ZILLOW API KEY FROM LOCAL FILE
 		String glassDoor_token = "";
@@ -48,12 +38,7 @@ public class glassDoorAPI
 		}
 		return glassDoor_token;
 	}
-
-
-
-
-
-
+	
 	public static void main(String[] args){
 
 	}

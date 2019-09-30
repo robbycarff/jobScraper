@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - glassDoorAPI",
+            "request": "launch",
+            "mainClass": "glassDoorAPI",
+            "projectName": "jobScraper_50215454"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - driverProgram",
+            "request": "launch",
+            "mainClass": "driverProgram",
+            "projectName": "jobScraper_50215454"
+        }
+    ]
+}

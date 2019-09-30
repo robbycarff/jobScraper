@@ -30,9 +30,9 @@ for child in root:
 	print(child.tag, child.attrib)
 
 # this dumps the request, message, and response
-children = root.getchildren()
-for child in children:
-    ET.dump(child)
+# children = root.getchildren()
+# for child in children:
+#     ET.dump(child)
 
 print(root.tag)
 
@@ -40,16 +40,20 @@ print(child[0].tag)
 print(child[1].tag)
 print(child[2].tag)
 
-regionChildren = list(child[0])
-subRegionChildren = list(child[1])
-listChildren = list(child[2])
+regionChildren = child[0]
+'''
+list version of the region data
+listVersionChildren = list(child[2])
+print(listVersionChildren)
+'''
 
-for child in child[0]:
-	print (child.tag, child.text)
-	id = child.text
-	latitude = child.text
-	longitude = child.text
-	print(id, latitude, longitude)
+# we want to use the actual tree structure to be able to retreive the long/lat
+listChildren = child[2]
+for region in listChildren:
+	print("\n")
+	for element in region:
+			print(element.text) # THIS PRINT OUT EACH NEIGHBORHOOD WITH ITS INFO
+
 
 #PLOTTING HERE
 

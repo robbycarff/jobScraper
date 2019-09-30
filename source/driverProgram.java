@@ -27,7 +27,8 @@ public class driverProgram
 	{
 		//gets out private Zillow key
 		String zillow_token = zillowAPI.getZillowToken();
-
+		System.out.println(zillow_token);
+		
 		// these will be controlled with command line arguments
 		String State = "sc";
 		String City = "charleston";

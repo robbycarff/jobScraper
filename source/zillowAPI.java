@@ -125,7 +125,8 @@ public class zillowAPI{
 				//this is the instances API_TOKEN
 		        zillow_token = keys.nextLine();
 		        System.out.println("Zillow Key: " + zillow_token);
-	    	}	
+			}	
+			keys.close();
 		}
 		catch (FileNotFoundException ex){
 			System.out.println("ur file shits broken");
