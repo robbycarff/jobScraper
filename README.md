@@ -1,5 +1,6 @@
 # JobScraper
-The goal of this project is to help me with look at metrics from various cities and neighborhoods while I look for a job.
+The goal of this project is to build a web analytics dashboard. I am planning to apply it to housing and job market data. 
+Build my own trading bot to display on dashboard?
 
 ## Architecture plan
 
@@ -10,6 +11,7 @@ The goal of this project is to help me with look at metrics from various cities 
 
 ![Map one](https://github.com/robbycarff/jobScraper/blob/master/images/map1.png)
 ![Map two](https://github.com/robbycarff/jobScraper/blob/master/images/map2.png)
+
 images generated with plotly
 
 #### Built with
@@ -39,19 +41,31 @@ going to change these functions/libraries into javascript
 ### Installing MongoDB 
 [Documentation here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
 ```
-brew update
+brew tap mongodb/brew
 
-brew install mongodb
+brew install mongodb-community@4.2
 ```
-Create a directory (this should exist in the repository already)
-this is where the datafiles live
+In addition to the binaries, the install creates:
+
+the configuration file (/usr/local/etc/mongod.conf)
+the log directory path (/usr/local/var/log/mongodb)
+the data directory path (/usr/local/var/mongodb)
 ```
-mkdir -p /data/db
+brew services start mongodb-community@4.2
+
+brew services stop mongodb-community@4.2
+
+//as background process
+
+mongod --config /usr/local/etc/mongod.conf --fork
 ```
-Make sure it has the right permissions
+To verify that MongoDB is running, search for mongod in your running processes:
 ```
-sudo chown -R 'id -un' /data/db
-# enter your password
+ps aux | grep -v grep | grep mongod
+```
+To begin using MongoDB, connect a mongo shell to the running instance. From a new terminal, issue the following:
+```
+mongo
 ```
 
 ### Deployment
