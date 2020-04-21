@@ -1,28 +1,32 @@
 # JobScraper
 The goal of this project is to help me with look at metrics from various cities and neighborhoods while I look for a job.
 
-Goals:
-- datamine with zillow API
-- datamine wil glassdoor API
-- interpret and parse data
-- show various statistics of the neighborhoods I am looking for
-  - Salary / Housing cost
-  - Areas with fastest growing house market
-  - cool stuff
-- plot all this data on a map
+## Architecture plan
 
+* use mongodb to create JSON-like objects from data pulled from zillow 
+* write a well structure API request to unpack data and store in SQL database
+* Use MEAN to create a webspace for analytical graphics
+* implement well-known finance equations and models as practice 
 
 ![Map one](https://github.com/robbycarff/jobScraper/blob/master/images/map1.png)
-
-
 ![Map two](https://github.com/robbycarff/jobScraper/blob/master/images/map2.png)
-
+images generated with plotly
 
 #### Built with
-This project uses [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm) to gather data. Plots the data using ploty to create extremely cool maps based on gathered data
+MongoDB provides a lot more flexibility to store data. Further, Express.js helps to standardize the web building process. AngularJS offers a clean and simple way to add interactive functions, while Node.js affords an improved nexus for running your server.
+Stacked together they offer a clean and coherent mechanism to move data back and forth from user to disk farm.
 
+#### Stack
+going to change these functions/libraries into javascript
 * [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
 * [Python](https://www.python.org)
+
+* [MongoDB (data storage)](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+* [Express.js (server-side application framework)](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+* [AngularJS (client-side application framework)](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+* [Node.js (server-side language environment)](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+
+#### API
 * [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm)
 * [Glassdoor API](https://www.glassdoor.com/developer/index.htm)
 * [Ploty](https://plot.ly/python/maps/)
@@ -31,14 +35,30 @@ This project uses [Zillow API](https://www.zillow.com/howto/api/APIOverview.htm)
  head on over to the [Zillow API website](https://www.zillow.com/howto/api/APIOverview.html) and request an API key. I store this in a file named apiKeys.txt, and read from it in the zillowAPI.java program. (the zillow key has to be on the first line of the file currently)
 
 ### Prerequisites
-Install all of the required programming librarys linked above (java, python)
 
-### Installing
+### Installing MongoDB 
+[Documentation here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
+```
+brew update
+
+brew install mongodb
+```
+Create a directory (this should exist in the repository already)
+this is where the datafiles live
+```
+mkdir -p /data/db
+```
+Make sure it has the right permissions
+```
+sudo chown -R 'id -un' /data/db
+# enter your password
+```
+
+### Deployment
 
 ```
 git clone https://github.com/robbycarff/jobScraper
 ```
-### Deployment
 
 TODO: write a make bash script to compile all java AND python files
 compile
